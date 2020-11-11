@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 
 class ScoreViewModel : ViewModel() {
 
+    //tag for logging
+    val TAG = "ScoreViewModel"
+
     //variable that holds the number of already displayed letters
     var numOfDisLetters : Int = 0
 
