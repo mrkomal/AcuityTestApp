@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Right"
@@ -15,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonWrong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wrong"
@@ -33,4 +35,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/numOfAllAnswersTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/buttonWrong"
+            app:layout_constraintStart_toStartOf="@+id/buttonWrong"
+            app:layout_constraintTop_toBottomOf="@+id/buttonWrong" />
+
+        <TextView
+            android:id="@+id/numOfCorrectAnswersTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/buttonRight"
+            app:layout_constraintStart_toStartOf="@+id/buttonRight"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRight" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
