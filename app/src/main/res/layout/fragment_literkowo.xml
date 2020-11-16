@@ -29,7 +29,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Literka"
+        android:text="0"
         android:fontFamily="@font/optician_sans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,6 @@
             android:id="@+id/numOfAllAnswersTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             app:layout_constraintEnd_toEndOf="@+id/buttonWrong"
             app:layout_constraintStart_toStartOf="@+id/buttonWrong"
             app:layout_constraintTop_toBottomOf="@+id/buttonWrong" />
