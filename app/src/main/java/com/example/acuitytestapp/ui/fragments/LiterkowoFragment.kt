@@ -46,6 +46,11 @@ class LiterkowoFragment : Fragment() {
             scoreViewModel.numOfCorrectAnswers.observe(viewLifecycleOwner, Observer {
                 numOfCorrectAnswersTextView.text = "Correct: " + it.toString()
             })
+
+            scoreViewModel.letterToDisplay.observe(viewLifecycleOwner, Observer {
+                textView.text = it
+            })
+
         }
     }
 }

@@ -6,8 +6,17 @@ class LettersGenerator {
 
     var snellenChart : DefaultSnellenChart = DefaultSnellenChart()
 
-    // notatka
-    //val randomLetter1: String = List(1) { line1.random() }.joinToString("")
-    //val randomLetter2: String = List(1) { line2.random() }.joinToString("")
+    // trial
+    val exampleString : String = "abcdefghijk"
+
+    //shuffled list from String
+    var exampleList = exampleString.split("")
+        .filter { it.isNotEmpty() }
+        .shuffled()
+        .toMutableList()
+
+    fun yieldLetter() : String {
+        return if(exampleList.isNotEmpty()) exampleList.removeAt(0) else "Over"
+    }
 
 }
