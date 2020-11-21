@@ -11,8 +11,20 @@
             android:id="@+id/action_modeChoiceFragment_to_literkowoFragment"
             app:destination="@id/literkowoFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/literkowoFragment"
         android:name="com.example.acuitytestapp.ui.fragments.LiterkowoFragment"
-        android:label="LiterkowoFragment" />
+        android:label="LiterkowoFragment" >
+        <action
+            android:id="@+id/action_literkowoFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.acuitytestapp.ui.fragments.ResultFragment"
+        android:label="ResultFragment" />
+
+
 </navigation>
