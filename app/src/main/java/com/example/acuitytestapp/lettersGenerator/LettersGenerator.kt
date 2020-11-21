@@ -1,10 +1,11 @@
 package com.example.acuitytestapp.lettersGenerator
 
 import com.example.acuitytestapp.snellenchart.DefaultSnellenChart
+import com.example.acuitytestapp.snellenchart.ISnellenChart
 
-class LettersGenerator {
+class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
 
-    var snellenChart : DefaultSnellenChart = DefaultSnellenChart()
+    private var snellenChart = chart
 
     // trial
     val exampleString : String = "abcdefghijk"
