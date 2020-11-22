@@ -15,11 +15,7 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
     var isTestOver = false
 
     fun checkTestState(): Boolean {
-        Log.d("currentRowNumber", currentRowNumber.toString())
-        Log.d("current_max", snellenChart.mapOfLettersForEachRow.keys.max().toString())
-        Log.d("currentIsEmpty", currentRowLetters.isEmpty().toString())
         if(currentRowNumber == snellenChart.mapOfLettersForEachRow.keys.max() && currentRowLetters.isEmpty()) {
-            Log.d("current_in", "OK")
             isTestOver = true
         }
 
