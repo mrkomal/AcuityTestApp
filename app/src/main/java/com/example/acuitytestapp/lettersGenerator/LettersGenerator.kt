@@ -15,9 +15,9 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
     var isTestOver = false
 
     fun checkTestState(): Boolean {
-        Log.d("currentRowNumber", currentRowNumber.toString())
-        Log.d("current_max", snellenChart.mapOfLettersForEachRow.keys.max().toString())
-        Log.d("currentIsEmpty", currentRowLetters.isEmpty().toString())
+        //Log.d("currentRowNumber", currentRowNumber.toString())
+        //Log.d("current_max", snellenChart.mapOfLettersForEachRow.keys.max().toString())
+        //Log.d("currentIsEmpty", currentRowLetters.isEmpty().toString())
         if(currentRowNumber == snellenChart.mapOfLettersForEachRow.keys.max() && currentRowLetters.isEmpty()) {
             Log.d("current_in", "OK")
             isTestOver = true
@@ -42,10 +42,20 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
         return if (currentRowLetters.isNotEmpty()) currentRowLetters.removeAt(0) else ""
     }
 
+    fun getLettersSize(): Int {
+        if(currentRowLetters.isEmpty() && currentRowNumber != snellenChart.mapOfLettersForEachRow.keys.max()) {
+            updateCurrentRowAttributes()
+        }
+
+        return getSizeOfLettersInPix(snellenChart.mapOfLetterSizesInMmForEachRow[currentRowNumber])
+
+    }
+
+
     private fun updateCurrentRowAttributes() {
         //going to next row
         currentRowNumber = currentRowNumber.plus(1)
-        Log.d("currentRowNumber", currentRowNumber.toString())
+        //Log.d("currentRowNumber", currentRowNumber.toString())
 
         //splitting string into list of letters
         val row =  snellenChart.mapOfLettersForEachRow[currentRowNumber]
@@ -67,5 +77,13 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
 
     fun getNumOfCorrectAnswersInRow() : Int {
         return numberOfCorrectAnswersInRow
+    }
+
+    fun getSizeOfLettersInPix(mmSize: Double?): Int {
+        //getting size in mm's and returning size in pixels (approximated)
+        if (mmSize != null) {
+            return (mmSize/0.26).toInt()
+        }
+        else return 5
     }
 }

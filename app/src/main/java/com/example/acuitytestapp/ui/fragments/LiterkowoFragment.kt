@@ -56,6 +56,10 @@ class LiterkowoFragment : Fragment() {
                 }
             })
 
+            scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
+                Log.d("Generated letter size in pix: ", scoreViewModel.lettersSize.toString())
+            })
+
             scoreViewModel.letterToDisplay.observe(viewLifecycleOwner, Observer {
                 textView.text = it
             })
