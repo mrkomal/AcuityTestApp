@@ -10,32 +10,42 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
     private var snellenChart = chart
     private var currentRowNumber = 0
     private var currentRowLength = 0
-    private var currentRowLetters: MutableList<String> = mutableListOf() //mutableListOf(snellenChart.mapOfLettersForEachRow[currentRowNumber])
+    private var currentRowLetters: MutableList<String> = mutableListOf()
     private var numberOfCorrectAnswersInRow = 0
     var isTestOver = false
 
     fun checkTestState(): Boolean {
+        Log.d("currentRowNumber", currentRowNumber.toString())
+        Log.d("current_max", snellenChart.mapOfLettersForEachRow.keys.max().toString())
+        Log.d("currentIsEmpty", currentRowLetters.isEmpty().toString())
         if(currentRowNumber == snellenChart.mapOfLettersForEachRow.keys.max() && currentRowLetters.isEmpty()) {
+            Log.d("current_in", "OK")
             isTestOver = true
         }
 
-        if(numberOfCorrectAnswersInRow < currentRowLength/2 && currentRowLetters.isEmpty()) {
+        val minValueToPassRow: Float = (currentRowLength.toFloat()/2)
+        if(numberOfCorrectAnswersInRow < minValueToPassRow && currentRowLetters.isEmpty()) {
             isTestOver = true
         }
         return isTestOver
     }
 
     fun yieldLetter(): String {
-        if(currentRowLetters.isEmpty() || numberOfCorrectAnswersInRow > currentRowLength/2) {
+        /* czy robimy z tym warunkiem? - do rozwazenia
+        val minValueToPassRow: Float = (currentRowLength.toFloat()/2)
+        || numberOfCorrectAnswersInRow > minValueToPassRow
+         */
+        if(currentRowLetters.isEmpty() && currentRowNumber != snellenChart.mapOfLettersForEachRow.keys.max()) {
             updateCurrentRowAttributes()
         }
 
-        return currentRowLetters.removeAt(0)
+        return if (currentRowLetters.isNotEmpty()) currentRowLetters.removeAt(0) else ""
     }
 
     private fun updateCurrentRowAttributes() {
         //going to next row
         currentRowNumber = currentRowNumber.plus(1)
+        Log.d("currentRowNumber", currentRowNumber.toString())
 
         //splitting string into list of letters
         val row =  snellenChart.mapOfLettersForEachRow[currentRowNumber]
@@ -58,20 +68,4 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
     fun getNumOfCorrectAnswersInRow() : Int {
         return numberOfCorrectAnswersInRow
     }
-
-/*
-    // trial
-    val exampleString : String = "abcdefghijk"
-
-    //shuffled list from String
-    var exampleList = exampleString.split("")
-        .filter { it.isNotEmpty() }
-        .shuffled()
-        .toMutableList()
-
-    fun yieldLetter() : String {
-        //Log.d("Generator", currentRow.toString())
-        return if(exampleList.isNotEmpty()) exampleList.removeAt(0) else "Over"
-    }
-*/
 }
