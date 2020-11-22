@@ -20,6 +20,7 @@ class ScoreViewModel : ViewModel() {
     val numOfCorrectAnswers: LiveData<Int>
         get() = _numOfCorrectAnswers
 
+
     //letters info
     private val lettersGenerator = LettersGenerator()
 
@@ -27,13 +28,22 @@ class ScoreViewModel : ViewModel() {
     val letterToDisplay: LiveData<String>
         get() = _letterToDisplay
 
+    //test over information
+    private var _isTestOver = MutableLiveData(lettersGenerator.isTestOver)
+    val isTestOver: LiveData<Boolean>
+        get() = _isTestOver
 
     fun triggerButtonProcedure (answerIsCorrect : Boolean) {
         _numOfAllAnswers.value = _numOfAllAnswers.value!! + 1
         if(answerIsCorrect) {
             _numOfCorrectAnswers.value = _numOfCorrectAnswers.value!! + 1
+
+            val numOfCorrectAnswersInRow = lettersGenerator.getNumOfCorrectAnswersInRow() + 1
+            Log.d("corr", numOfCorrectAnswersInRow.toString())
+            lettersGenerator.setNumOfCorrectAnswersInRow(numOfCorrectAnswersInRow)
         }
 
+        _isTestOver.value = lettersGenerator.checkTestState()
         _letterToDisplay.value = lettersGenerator.yieldLetter()
     }
 }
