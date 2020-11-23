@@ -2,6 +2,7 @@ package com.example.acuitytestapp.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +58,8 @@ class LiterkowoFragment : Fragment() {
             })
 
             scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
-                textView.textSize = it.toFloat()
+                //converting pixels to sp (scale-independent pixels, required for fonts)
+                textView.textSize = it * resources.displayMetrics.scaledDensity
             })
 
             scoreViewModel.letterToDisplay.observe(viewLifecycleOwner, Observer {
