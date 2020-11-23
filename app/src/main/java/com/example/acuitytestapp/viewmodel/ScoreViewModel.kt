@@ -28,9 +28,10 @@ class ScoreViewModel : ViewModel() {
     val letterToDisplay: LiveData<String>
         get() = _letterToDisplay
 
-    private var lettersSize = MutableLiveData(lettersGenerator.getLettersSize())
+    private var _lettersSize = MutableLiveData(lettersGenerator.getLettersSize())
+        //lettersGenerator.getLettersSize())
     val lettersSize : LiveData<Int>
-        get() = lettersSize
+        get() = _lettersSize
 
 
     //test over information
@@ -43,12 +44,11 @@ class ScoreViewModel : ViewModel() {
         if(answerIsCorrect) {
             _numOfCorrectAnswers.value = _numOfCorrectAnswers.value!! + 1
 
-            val numOfCorrectAnswersInRow = lettersGenerator.getNumOfCorrectAnswersInRow() + 1
-            Log.d("corr", numOfCorrectAnswersInRow.toString())
-            lettersGenerator.setNumOfCorrectAnswersInRow(numOfCorrectAnswersInRow)
+            lettersGenerator.incrementNumOfCorrectAnsInRow()
         }
 
         _isTestOver.value = lettersGenerator.checkTestState()
         _letterToDisplay.value = lettersGenerator.yieldLetter()
+        _lettersSize.value = lettersGenerator.getLettersSize()
     }
 }
