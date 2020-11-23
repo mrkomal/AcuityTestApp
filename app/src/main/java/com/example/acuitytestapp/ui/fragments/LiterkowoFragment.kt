@@ -56,6 +56,10 @@ class LiterkowoFragment : Fragment() {
                 }
             })
 
+            scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
+                textView.textSize = it.toFloat()
+            })
+
             scoreViewModel.letterToDisplay.observe(viewLifecycleOwner, Observer {
                 textView.text = it
             })

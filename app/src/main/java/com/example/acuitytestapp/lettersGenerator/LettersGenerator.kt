@@ -11,7 +11,9 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
     private var currentRowNumber = 0
     private var currentRowLength = 0
     private var currentRowLetters: MutableList<String> = mutableListOf()
+    private var currentLetterSizeInPixels = 0
     private var numberOfCorrectAnswersInRow = 0
+
     var isTestOver = false
 
     fun checkTestState(): Boolean {
@@ -38,10 +40,18 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
         return if (currentRowLetters.isNotEmpty()) currentRowLetters.removeAt(0) else ""
     }
 
+    fun incrementNumOfCorrectAnsInRow(){
+        numberOfCorrectAnswersInRow += 1
+    }
+
+    fun getLettersSize(): Int {
+        return currentLetterSizeInPixels
+    }
+
+
     private fun updateCurrentRowAttributes() {
         //going to next row
         currentRowNumber = currentRowNumber.plus(1)
-        Log.d("currentRowNumber", currentRowNumber.toString())
 
         //splitting string into list of letters
         val row =  snellenChart.mapOfLettersForEachRow[currentRowNumber]
@@ -54,14 +64,16 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
         currentRowLength = row.length
 
         //updating number of correct answer in a row
-        setNumOfCorrectAnswersInRow(0)
+        numberOfCorrectAnswersInRow = 0
+
+        //updating letter size
+        val currentLetterSizeInMm = snellenChart.mapOfLetterSizesInMmForEachRow[currentRowNumber]
+        currentLetterSizeInPixels = getSizeOfLettersInPix(currentLetterSizeInMm!!)
     }
 
-    fun setNumOfCorrectAnswersInRow(newNumber: Int) {
-        numberOfCorrectAnswersInRow = newNumber
+    private fun getSizeOfLettersInPix(mmSize: Double): Int {
+        //getting size in mm's and returning size in pixels (approximated)
+        return (mmSize/0.26).toInt()
     }
 
-    fun getNumOfCorrectAnswersInRow() : Int {
-        return numberOfCorrectAnswersInRow
-    }
 }
