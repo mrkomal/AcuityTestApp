@@ -12,31 +12,31 @@
 
         <Button
             android:id="@+id/buttonRight"
-            android:layout_width="wrap_content"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:background="#000000"
             android:text="@string/right"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.941" />
+            app:layout_constraintVertical_bias="0.96" />
 
         <Button
             android:id="@+id/buttonWrong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="108dp"
+            android:layout_height="45dp"
             android:background="#000000"
             android:text="@string/wrong"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
+            app:layout_constraintHorizontal_bias="0.102"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.945" />
+            app:layout_constraintVertical_bias="0.956" />
 
         <TextView
             android:id="@+id/textView"
