@@ -36,8 +36,9 @@ class ScoreViewModel : ViewModel() {
 
     //test over information
     private var _isTestOver = MutableLiveData(lettersGenerator.isTestOver)
-    val isTestOver: LiveData<Boolean>
+    val isTestOverRight: LiveData<Boolean>
         get() = _isTestOver
+
 
     fun triggerButtonProcedure (answerIsCorrect : Boolean) {
         _numOfAllAnswers.value = _numOfAllAnswers.value!! + 1

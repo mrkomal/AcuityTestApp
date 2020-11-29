@@ -57,6 +57,7 @@ class LiterkowoFragment : Fragment() {
                 }
             })
 
+
             scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
                 //converting pixels to sp (scale-independent pixels, required for fonts)
                 textView.textSize = it * resources.displayMetrics.scaledDensity

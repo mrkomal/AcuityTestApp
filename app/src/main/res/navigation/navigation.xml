@@ -8,7 +8,16 @@
         android:name="com.example.acuitytestapp.ui.fragments.ModeChoiceFragment"
         android:label="ModeChoiceFragment" >
         <action
-            android:id="@+id/action_modeChoiceFragment_to_literkowoFragment"
+            android:id="@+id/action_modeChoiceFragment_to_infoFragment1"
+            app:destination="@id/infoFragment1" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment1"
+        android:name="com.example.acuitytestapp.ui.fragments.InfoFragment1"
+        android:label="InfoFragment1" >
+        <action
+            android:id="@+id/action_infoFragment1_to_literkowoFragment"
             app:destination="@id/literkowoFragment" />
     </fragment>
 
@@ -17,14 +26,24 @@
         android:name="com.example.acuitytestapp.ui.fragments.LiterkowoFragment"
         android:label="LiterkowoFragment" >
         <action
-            android:id="@+id/action_literkowoFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            android:id="@+id/action_literkowoFragment_to_infoFragment2"
+            app:destination="@id/infoFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment2"
+        android:name="com.example.acuitytestapp.ui.fragments.InfoFragment2"
+        android:label="InfoFragment2" >
+        <action
+            android:id="@+id/action_infoFragment2_to_literkowoFragment"
+            app:destination="@id/literkowoFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.acuitytestapp.ui.fragments.ResultFragment"
         android:label="ResultFragment" />
+
 
 
 </navigation>
