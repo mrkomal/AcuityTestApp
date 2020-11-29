@@ -33,10 +33,9 @@ class ScoreViewModel : ViewModel() {
     val lettersSize : LiveData<Int>
         get() = _lettersSize
 
-
     //test over information
     private var _isTestOver = MutableLiveData(lettersGenerator.isTestOver)
-    val isTestOverRight: LiveData<Boolean>
+    val isTestOver: LiveData<Boolean>
         get() = _isTestOver
 
 
