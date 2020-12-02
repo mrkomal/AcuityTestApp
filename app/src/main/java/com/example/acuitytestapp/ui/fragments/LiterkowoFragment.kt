@@ -53,7 +53,7 @@ class LiterkowoFragment : Fragment() {
 
             scoreViewModel.isTestOver.observe(viewLifecycleOwner, Observer {
                 if(it) {
-                    view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
+                    //view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
                 }
             })
 

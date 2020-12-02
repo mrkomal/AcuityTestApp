@@ -12,14 +12,17 @@
         android:id="@+id/coverLeftEyeInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/coverLeftEyeInformation"
         android:fontFamily="@font/optician_sans"
-        android:textSize="18sp"
+        android:gravity="center"
+        android:text="@string/coverLeftEyeInformation"
         android:textColor="#000000"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128" />
 
     <Button
         android:id="@+id/buttonStartTest2"
@@ -35,4 +38,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96" />
+
+    <ImageView
+        android:id="@+id/imageLeftEye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597"
+        app:srcCompat="@drawable/lefteye" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/leftEye" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
