@@ -16,6 +16,7 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
 
     var isTestOver = false
 
+
     fun checkTestState(): Boolean {
         if(currentRowNumber == snellenChart.mapOfLettersForEachRow.keys.max() && currentRowLetters.isEmpty()) {
             isTestOver = true
@@ -23,7 +24,7 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
 
         val minValueToPassRow: Float = (currentRowLength.toFloat()/2)
         if(numberOfCorrectAnswersInRow < minValueToPassRow && currentRowLetters.isEmpty()) {
-            isTestOver = true
+            isTestOver= true
         }
         return isTestOver
     }

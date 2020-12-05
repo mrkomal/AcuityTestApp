@@ -6,11 +6,13 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.acuitytestapp.R
 import com.example.acuitytestapp.databinding.FragmentLiterkowoBinding
 import com.example.acuitytestapp.viewmodel.ScoreViewModel
@@ -24,6 +26,7 @@ class LiterkowoFragment : Fragment() {
     private lateinit var scoreViewModelFactory : ScoreViewModelFactory
     private lateinit var scoreViewModel: ScoreViewModel
     private lateinit var binding: FragmentLiterkowoBinding
+    val args: LiterkowoFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_literkowo, container, false)
@@ -33,7 +36,6 @@ class LiterkowoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         scoreViewModelFactory = ScoreViewModelFactory()
         scoreViewModel = ViewModelProvider(this, scoreViewModelFactory).get(ScoreViewModel::class.java)
 
@@ -53,9 +55,10 @@ class LiterkowoFragment : Fragment() {
 
             scoreViewModel.isTestOver.observe(viewLifecycleOwner, Observer {
                 if(it) {
-                    view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
+                    //view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
                 }
             })
+
 
             scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
                 //converting pixels to sp (scale-independent pixels, required for fonts)
@@ -66,6 +69,12 @@ class LiterkowoFragment : Fragment() {
                 textView.text = it
             })
 
+            scoreViewModel.isTestOver.observe(viewLifecycleOwner, Observer {
+                if (it) {
+                    if (args.previousInfoFragmentId == 1) view.findNavController().navigate(R.id.action_literkowoFragment_to_infoFragment2)
+                    else view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
+                }
+            })
         }
     }
 }

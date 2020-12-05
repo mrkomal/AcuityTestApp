@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:text="@string/right"
+            android:fontFamily="@font/optician_sans"
+            android:textSize="18sp"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +32,8 @@
             android:layout_height="45dp"
             android:background="#000000"
             android:text="@string/wrong"
+            android:fontFamily="@font/optician_sans"
+            android:textSize="18sp"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,12 +46,13 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:fontFamily="@font/optician_sans"
+            android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
 
         <TextView
             android:id="@+id/numOfAllAnswersTextView"

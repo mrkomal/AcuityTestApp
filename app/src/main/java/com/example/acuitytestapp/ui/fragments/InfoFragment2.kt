@@ -8,16 +8,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.acuitytestapp.R
-import kotlinx.android.synthetic.main.fragment_mode_choice.*
+import kotlinx.android.synthetic.main.fragment_info1.*
+import kotlinx.android.synthetic.main.fragment_info2.*
 
-class ModeChoiceFragment : Fragment() {
+class InfoFragment2: Fragment() {
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_mode_choice, container, false)
+        return inflater.inflate(R.layout.fragment_info2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        literowoButton.setOnClickListener{view ->
-            view.findNavController().navigate(R.id.action_modeChoiceFragment_to_infoFragment1)}
+        buttonStartTest2.setOnClickListener{view ->
+            val action = InfoFragment2Directions.actionInfoFragment2ToLiterkowoFragment(2)
+            Navigation.findNavController(requireView()).navigate(action)
+        }
     }
 }

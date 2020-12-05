@@ -2,5 +2,8 @@
     <string name="app_name">Acuity Application</string>
     <string name="wrong">Wrong</string>
     <string name="right">Right</string>
-    <string name="literkowo">Literkowo</string>
+    <string name="literkowo">Snellen Test</string>
+    <string name="coverRightEyeInformation">"Please stand 3 m from the screen and cover your right eye."</string>
+    <string name="startTest">"Start Test"</string>
+    <string name="coverLeftEyeInformation">"Please cover your left eye</string>
 </resources>
