@@ -18,7 +18,11 @@
         android:label="InfoFragment1" >
         <action
             android:id="@+id/action_infoFragment1_to_literkowoFragment"
-            app:destination="@id/literkowoFragment" />
+            app:destination="@id/literkowoFragment" >
+            <argument
+                android:name="previousInfoFragmentId"
+                android:defaultValue="1" />
+        </action>
     </fragment>
 
     <fragment
@@ -28,6 +32,12 @@
         <action
             android:id="@+id/action_literkowoFragment_to_infoFragment2"
             app:destination="@id/infoFragment2" />
+        <argument
+            android:name="previousInfoFragmentId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_literkowoFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
 
     <fragment
@@ -36,13 +46,21 @@
         android:label="InfoFragment2" >
         <action
             android:id="@+id/action_infoFragment2_to_literkowoFragment"
-            app:destination="@id/literkowoFragment" />
+            app:destination="@id/literkowoFragment" >
+            <argument
+                android:name="previousInfoFragmentId"
+                android:defaultValue="2" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.acuitytestapp.ui.fragments.ResultFragment"
-        android:label="ResultFragment" />
+        android:label="ResultFragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_modeChoiceFragment"
+            app:destination="@id/modeChoiceFragment" />
+    </fragment>
 
 
 
