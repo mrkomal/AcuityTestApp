@@ -50,14 +50,4 @@
         app:layout_constraintVertical_bias="0.597"
         app:srcCompat="@drawable/lefteye" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leftEye" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.acuitytestapp.R
 import kotlinx.android.synthetic.main.fragment_info1.*
+import kotlinx.android.synthetic.main.fragment_info2.*
 
 class InfoFragment2: Fragment() {
 
@@ -17,7 +19,9 @@ class InfoFragment2: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        buttonStartTest.setOnClickListener{view ->
-            view.findNavController().navigate(R.id.action_infoFragment2_to_literkowoFragment)}
+        buttonStartTest2.setOnClickListener{view ->
+            val action = InfoFragment2Directions.actionInfoFragment2ToLiterkowoFragment(2)
+            Navigation.findNavController(requireView()).navigate(action)
+        }
     }
 }
