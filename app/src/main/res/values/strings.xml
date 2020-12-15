@@ -3,4 +3,10 @@
     <string name="wrong">Wrong</string>
     <string name="right">Right</string>
     <string name="literkowo">Literkowo</string>
+    <string name="result_right_eye_text">Wada\n prawego oka</string>
+    <string name="result_left_eye_text">Wada\n lewego oka</string>
+    <string name="right_eye_wada">0.00</string>
+    <string name="left_eye_wada">0.00</string>
+    <string name="result_button_text">Ok</string>
+    <string name="go_to_doctor_text">Zalecamy udanie się\n do specjalisty.</string>
 </resources>
