@@ -77,4 +77,8 @@ class LettersGenerator(chart : ISnellenChart = DefaultSnellenChart()) {
         return (mmSize/0.26).toInt()
     }
 
+    fun estimateLenPower(): Double {
+        return snellenChart.mapOfLensPowerForEachRow[currentRowNumber] ?: error("")
+    }
+
 }

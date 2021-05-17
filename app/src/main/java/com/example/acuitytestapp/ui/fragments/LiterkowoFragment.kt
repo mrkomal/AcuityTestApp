@@ -19,26 +19,27 @@ import com.example.acuitytestapp.viewmodel.ScoreViewModel
 import com.example.acuitytestapp.viewmodel.ScoreViewModelFactory
 import kotlinx.android.synthetic.main.fragment_literkowo.*
 import kotlinx.android.synthetic.main.fragment_mode_choice.*
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 class LiterkowoFragment : Fragment() {
 
-    private lateinit var scoreViewModelFactory : ScoreViewModelFactory
+//    private lateinit var scoreViewModelFactory : ScoreViewModelFactory
     private lateinit var scoreViewModel: ScoreViewModel
     private lateinit var binding: FragmentLiterkowoBinding
     val args: LiterkowoFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_literkowo, container, false)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
+        scoreViewModel = getViewModel()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        scoreViewModelFactory = ScoreViewModelFactory()
-        scoreViewModel = ViewModelProvider(this, scoreViewModelFactory).get(ScoreViewModel::class.java)
-
+//        scoreViewModelFactory = ScoreViewModelFactory()
+//        scoreViewModel = ViewModelProvider(this, scoreViewModelFactory).get(ScoreViewModel::class.java)
         binding.apply {
             // Click listeners on wrong/right buttons
             buttonWrong.setOnClickListener{scoreViewModel.triggerButtonProcedure(false)}
@@ -53,13 +54,6 @@ class LiterkowoFragment : Fragment() {
                 numOfCorrectAnswersTextView.text = "Correct: " + it.toString()
             })
 
-            scoreViewModel.isTestOver.observe(viewLifecycleOwner, Observer {
-                if(it) {
-                    //view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
-                }
-            })
-
-
             scoreViewModel.lettersSize.observe(viewLifecycleOwner, Observer {
                 //converting pixels to sp (scale-independent pixels, required for fonts)
                 textView.textSize = it * resources.displayMetrics.scaledDensity
@@ -71,8 +65,16 @@ class LiterkowoFragment : Fragment() {
 
             scoreViewModel.isTestOver.observe(viewLifecycleOwner, Observer {
                 if (it) {
-                    if (args.previousInfoFragmentId == 1) view.findNavController().navigate(R.id.action_literkowoFragment_to_infoFragment2)
-                    else view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
+                    when(args.previousInfoFragmentId){
+                        1 -> {
+                            scoreViewModel.setRightEyeResults()
+                            view.findNavController().navigate(R.id.action_literkowoFragment_to_infoFragment2)
+                        }
+                        else -> {
+                            scoreViewModel.setLeftEyeResults()
+                            view.findNavController().navigate(R.id.action_literkowoFragment_to_resultFragment)
+                        }
+                    }
                 }
             })
         }
