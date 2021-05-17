@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.acuitytestapp.lettersGenerator.LettersGenerator
+import com.example.acuitytestapp.repository.ResultRepository
 
-class ScoreViewModel : ViewModel() {
+class ScoreViewModel(private val repository: ResultRepository) : ViewModel() {
 
     //tag for logging
     var TAG = "ScoreViewModel"
@@ -50,5 +51,18 @@ class ScoreViewModel : ViewModel() {
         _isTestOver.value = lettersGenerator.checkTestState()
         _letterToDisplay.value = lettersGenerator.yieldLetter()
         _lettersSize.value = lettersGenerator.getLettersSize()
+    }
+
+
+    fun setRightEyeResults(){
+        repository.numRightEye = _numOfCorrectAnswers.value!!
+        repository.maxRightEye = _numOfAllAnswers.value!!
+        repository.lenPowerRightEye = lettersGenerator.estimateLenPower()
+    }
+
+    fun setLeftEyeResults(){
+        repository.numLeftEye = _numOfCorrectAnswers.value!!
+        repository.maxLeftEye = _numOfAllAnswers.value!!
+        repository.lenPowerLeftEye = lettersGenerator.estimateLenPower()
     }
 }
