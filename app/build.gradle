@@ -22,8 +22,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 
     compileOptions {
@@ -45,8 +47,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+    // Koin AndroidX Scope feature
+    final def koin_version = "2.2.1"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment Factory
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
 }
